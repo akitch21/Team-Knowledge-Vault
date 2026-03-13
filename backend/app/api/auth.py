@@ -1,7 +1,7 @@
 from fastapi import APIRouter
 
-from shemas.users import ResponseUser as user_response_schemas
-from shemas.users import CreateUserRequest as create_user_request_schemas
+from schemas.users import ResponseUser as user_response_schemas
+from schemas.users import CreateUserRequest as create_user_request_schemas
 
 router = APIRouter(prefix="/auth",tags=["auth"])
 

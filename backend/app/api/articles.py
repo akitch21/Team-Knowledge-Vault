@@ -1,11 +1,11 @@
 from fastapi import APIRouter,Depends
 from typing import Any
 
-from shemas.articles import ResponseArticle as article_schemas
-from shemas.articles import CreateArticleRequest as create_article_request_schemas
-from shemas.articles import UpdateArticleRequest as update_article_request_schemas
+from schemas.articles import ResponseArticle as article_schemas
+from schemas.articles import CreateArticleRequest as create_article_request_schemas
+from schemas.articles import UpdateArticleRequest as update_article_request_schemas
 
-from shemas.articles import ArticleQueryParams as article_query_params_schemas
+from schemas.articles import ArticleQueryParams as article_query_params_schemas
 
 router = APIRouter(prefix="/articles",tags=["articles"])
 
