@@ -28,6 +28,8 @@ Next.js フロントエンドが FastAPI バックエンドへ REST API を通�
 将来的に全文検索やベクトル検索を導入する場合、別サービス（例: Elasticsearch, Supabaseなど）を追加します。
 
 Directory Structure
+
+```
 Team-Knowledge-Vault/
   ├── frontend/         # Next.js アプリケーション
   ├── backend/          # FastAPI アプリケーション
@@ -38,6 +40,7 @@ Team-Knowledge-Vault/
   │   └── db/           # DB 接続設定
   ├── docs/             # 設計資料や仕様書
   └── README.md         # プロジェクト概要
+```
 
 ## Getting Started
 ### Prerequisites
