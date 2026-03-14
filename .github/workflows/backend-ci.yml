@@ -1,0 +1,54 @@
+# ワークフローの名前
+name: Backend CI
+
+# ワークフローをトリガーするイベント
+on:
+  # 変更があったときにワークフローをトリガーする
+  push:
+    # 変更があったファイルのパスを指定
+    paths:
+      - "backend/**"
+      - ".github/workflows/backend-ci.yml"
+  # プルリクエストが作成されたときにワークフローをトリガーする
+  pull_request:
+    # 変更があったファイルのパスを指定
+    paths:
+      - "backend/**"
+      - ".github/workflows/backend-ci.yml"
+
+# ワークフローのジョブ
+jobs:
+  # テストジョブ
+  test:
+    # ジョブが実行される環境を指定
+    runs-on: ubuntu-latest
+
+    # ジョブのデフォルト設定
+    defaults:
+      # ジョブの実行ディレクトリを指定
+      run:
+        working-directory: backend
+
+    # ジョブの実行ステップ
+    steps:
+      # コードをチェックアウトするステップ
+      - name: Checkout
+        # コードをチェックアウトするアクションを使用
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+          if [ -f requirements-dev.txt ]; then pip install -r requirements-dev.txt; fi
+
+      - name: Run Ruff
+        run: ruff check .
+
+      - name: Run Pytest
+        run: pytest

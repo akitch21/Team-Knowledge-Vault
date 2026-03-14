@@ -1,11 +1,11 @@
 from fastapi import APIRouter,Depends,HTTPException,status
 from typing import Any
 
-from schemas.articles import ResponseArticle as article_schemas
-from schemas.articles import CreateArticleRequest as create_article_request_schemas
-from schemas.articles import UpdateArticleRequest as update_article_request_schemas
+from app.schemas.articles import ResponseArticle as article_schemas
+from app.schemas.articles import CreateArticleRequest as create_article_request_schemas
+from app.schemas.articles import UpdateArticleRequest as update_article_request_schemas
 
-from schemas.articles import ArticleQueryParams as article_query_params_schemas
+from app.schemas.articles import ArticleQueryParams as article_query_params_schemas
 
 router = APIRouter(prefix="/articles",tags=["articles"])
 

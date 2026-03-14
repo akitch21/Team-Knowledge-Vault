@@ -1,7 +1,7 @@
 from fastapi import FastAPI
-from api.auth import router as auth_router
-from api.articles import router as articles_router
-from api.tags import router as tags_router
+from app.api.auth import router as auth_router
+from app.api.articles import router as articles_router
+from app.api.tags import router as tags_router
 
 app = FastAPI()
 

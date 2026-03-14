@@ -1,5 +1,5 @@
 from fastapi import APIRouter
-from schemas.tags import TagBase as tag_schemas
+from app.schemas.tags import TagBase as tag_schemas
 
 router = APIRouter(prefix="/tags",tags=["tags"])
 
