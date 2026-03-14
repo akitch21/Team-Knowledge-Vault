@@ -1,4 +1,4 @@
-from fastapi import APIRouter,Depends
+from fastapi import APIRouter,Depends,HTTPException,status
 from typing import Any
 
 from schemas.articles import ResponseArticle as article_schemas
@@ -29,8 +29,11 @@ async def get_articles(query_params: article_query_params_schemas = Depends()) -
 
 @router.get("/{article_id}")
 async def get_article(article_id: int) -> article_schemas:
-    article = articles[article_id - 1]
-    return article_schemas(**article)
+    try:
+        article = articles[article_id - 1]
+        return article_schemas(**article)
+    except IndexError:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Article not found")
 
 @router.post("/",response_model=article_schemas)
 async def create_article(article: create_article_request_schemas):
