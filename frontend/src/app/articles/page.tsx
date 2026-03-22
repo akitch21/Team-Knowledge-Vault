@@ -1,5 +1,6 @@
 import React from 'react'
 
+
 async function getArticles() {
   const res = await fetch("http://localhost:8000/articles")
   return res.json()
